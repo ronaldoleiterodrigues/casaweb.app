@@ -1,0 +1,17 @@
+{
+    "name": "ronaldo/casawebapp",
+    "description": "sistema imobiliario criado no curso de desenvolvimento web",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ronaldo leite rodrigues"
+        }
+    ],
+    "require": {}
+}

@@ -46,3 +46,4 @@
     <div class="limpar"></div>
     <div class="barra bg-vermelho"></div> 
    </header>
+   <div class="limpar"></div>

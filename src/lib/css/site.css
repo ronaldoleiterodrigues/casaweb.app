@@ -1,18 +1,103 @@
-.barra{
+.barra {
     width: 400px;
     height: 6px;
     margin-top: 11px;
 }
+
 /* estilizando o topo ddo sistema */
-.baner{
+.baner {
     width: 100%;
     height: 586px;
     background-image: url('../img/casa-varandada.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
-.baner .mascara{
+
+.baner .mascara {
     width: 100%;
     height: 586px;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.comprar,
+.alugar {
+    width: 45%;
+    height: 400px;
+}
+
+.comprar {
+    background-image: url('../img/imagens/casa17.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.alugar {
+    background-image: url('../img/imagens/sala.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.fundo, .fundoa{
+    width: 100%;
+    height: 400px;
+}
+.fundo{
+    background-color: rgba(9,29,53, .8);
+}
+.fundoa{
+    background-color: rgba(220,94,92, .8);
+}
+.depoimentos .box-12{
+    height: 350px;
+}
+.carousel{
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.slaides{
+    display: flex;
+    transition: transform .5s ease-in-out;
+}
+.slaide{
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: slaid-fade 4s ease-in-out infinite;
+}
+@keyframes  slaid-fade{
+    0%, 100%{
+        opacity: 0;
+    }
+    25%, 75%{
+        opacity: 1;
+    }
+}
+.prev, .next{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, .5);
+    color:#fff;
+    border:none;
+    padding: 10;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+}
+.prev{
+    left:60px;
+}
+.next{
+    right:60px;
+}
+.paralax{
+    width: 100%;
+    height: 550px;
+    background-image: url('../img/banner1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }

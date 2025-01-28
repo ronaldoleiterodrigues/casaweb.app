@@ -1,3 +1,11 @@
+.header{
+    position:fixed;
+    top:0;
+}
+.esconde{
+    width: 100%;
+    height: 80px;
+}
 .barra {
     width: 400px;
     height: 6px;
@@ -101,3 +109,37 @@
     background-size: cover;
     background-attachment: fixed;
 }
+.contato-form form input, textarea{
+   border:none;
+   border-bottom: 1px solid #454f62;
+   margin-bottom: 30px;
+}
+.contato-form form input, label{
+    color:#fff;
+}
+.contato-form form input[type="radio"]{
+    transform:scale(.5);
+    margin-right: 10px;
+    margin-left: 5px;
+    vertical-align: middle;
+    appearance:none ;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #fff;       
+}
+.contato-form form input:checked[type="radio"]{
+  background-color: #2294f1;
+}
+/* ESTILO DO PAINEL DE CONTROLE */
+.painel .box-2{
+ margin-left: 0;
+}
+.painel .box-2 ul li{
+  border-bottom: 2px solid #ccc;
+}
+.painel .box-2 ul li a:hover{
+    font-size: 15px;
+    color:#f4f4f4;
+}
+input[type='file']{display:none;}

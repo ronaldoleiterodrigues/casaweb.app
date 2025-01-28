@@ -912,7 +912,7 @@ select {
     transition: .15s ease-in-out;
 }
 .fnc-vermelho-claro{
-    color:#f96f6c;
+    color:#ee9906;
     transition: .15s ease-in-out;
 }
 .fnc-sucesso {
@@ -956,14 +956,14 @@ select {
 }
 
 /* PALETA DE CORES  #E4ECF2 */
-.bg-azul{background-color: #0375b4;transition:.15s ease-in-out;}
+.bg-azul{background-color: #46a5e4;transition:.15s ease-in-out;}
 .bg-azul-escuro{background-color: #146693;}
 .bg-cinza{  
     background-color: #e4ecf2;
     transition: .15s ease-in-out;
 }
 .bg-vermelho {
-    background-color: #E50E0B;
+    background-color: #fc8482;
     transition: .15s ease-in-out;
 }
 .bg-vermelho-claro {
@@ -1003,7 +1003,7 @@ select {
 
 .grid th {
     height: 4rem;
-    background-color: rgba(235, 235, 235);
+    /* background-color: rgba(235, 235, 235); */
 }
 a{
     text-decoration: none;
@@ -1250,6 +1250,8 @@ a{
     display: block;
     clear: both;
 }
+.radius-start{border-radius: 5px 0 0 5px;}
+.radius-end{border-radius: 0 5px  5px 0 ;}
 /* ESTILO DO AVISO DE SUCESSO OU ERRO */
 .aviso{
     width: 100%;
@@ -1290,8 +1292,8 @@ a{
     margin-top: 10px;
 }
 .aviso .btn-mini{
-    width: 80px;
-    height: 35px;
+    width: 120px;
+    height: 30px;
     border-radius: 5px;
     box-shadow: -2rem 1rem 4rem rgba(0,0,0,0.2);
     cursor: pointer;

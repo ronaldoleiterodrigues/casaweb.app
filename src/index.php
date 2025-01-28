@@ -7,7 +7,7 @@ if($_GET):
      $controller = $_GET['controller'];
      $metodo = $_GET['metodo'];
 
-     $objClass = 'App\\Controller\\$controller';
+     $objClass = 'App\\Controller\\'.$controller;
 
      $obj = new $objClass();
      $obj->$metodo();

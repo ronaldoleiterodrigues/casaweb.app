@@ -18,7 +18,7 @@
 
             return $fileName;
         endif;
-        return null;
+        return '';
 
     }
  }

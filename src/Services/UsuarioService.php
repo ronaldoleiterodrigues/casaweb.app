@@ -36,7 +36,6 @@ class UsuarioService
         foreach ($dados as $key => $valores):
             $usuario->$key = $valores;
         endforeach;
-
         return $this->usuarioDao->atualizar($usuario);
     }
 }

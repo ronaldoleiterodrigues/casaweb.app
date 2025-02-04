@@ -43,37 +43,43 @@ class Conexao
         }
     }
 
-    // criando função responsavel por listar um objeto do banco de dados
-
+    // CRIANDO FUNÇÃO RESPONSAVEL POR LISTAR UM OBJETO DO BANCO DE DADOS
     protected function listar($tabela, $condicao = "", $parametro = [])
     {
         $sql = "SELECT * FROM {$tabela} {$condicao} ORDER BY ID DESC ";
         $stmt = $this->executarConsulta($sql, $parametro);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-    // CRIANDO A FUNÇÃO RESPONSAVEL POR INSERIR UM OBJETO NO BANCO DE DADOS
 
+    // metodo responsavel por listar o ultimo registro no banco
+    protected function listarUltimoRegistro($tabela, $campo,  $condicao = "", $parametro = [])
+    {
+        $sql = "SELECT MAX($campo) AS ULTIMOVALOR FROM {$tabela} {$condicao} ORDER BY ID DESC ";
+        $stmt = $this->executarConsulta($sql, $parametro);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    // CRIANDO A FUNÇÃO RESPONSAVEL POR INSERIR UM OBJETO NO BANCO DE DADOS
     protected function inserir($tabela, $atributos, $valores)
     {
         $sql = "INSERT INTO {$tabela} (" . implode(",", $atributos) . ")  VALUE(" . implode(",", array_fill(0, count($valores), "?")) . ")";
         $stmt = $this->executarConsulta($sql, $valores);
         return self::getConexao()->lastInsertId();
     }
-    // metodo responsavel por atualizar os objetos no banco de dados
+
+    // METODO RESPONSAVEL POR ATUALIZAR OS OBJETOS NO BANCO DE DADOS
     protected function update($tabela, $campos, $valores, $id)
     {
-        # UPDATE PROPRIETARIO SET NOME = BELTRANO WHERE ID = 1;
         $set = implode(',', array_map(fn($campo) => "$campo = ?", $campos));
         $sql = "UPDATE {$tabela} SET {$set}  WHERE ID = ? ";
         $stmt = $this->executarConsulta($sql, array_merge($valores, [$id]));
         return $stmt->rowCount();
     }
-    // metodo responsavel por excluir um item no banco de dados
+
+    // METODO RESPONSAVEL POR EXCLUIR UM ITEM NO BANCO DE DADOS
     protected function deletar($tabela, $id)
     {
-        # DELETE PROPRIETARIO WHERE ID = 1;
         $sql =  "DELETE FROM {$tabela} WHERE ID = ?  LIMIT 1";
-        //  return $sql;
         $stmt = $this->executarConsulta($sql, [$id]);
         return $stmt->rowCount();
     }

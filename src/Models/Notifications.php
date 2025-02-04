@@ -118,14 +118,4 @@ abstract class Notifications
         );
         return $mensagem;
     }
-
-    // Registra um log de mensagem
-    protected function log($mensagem)
-    {
-        echo "<link rel='stylesheet' type='text/css' href='lib/css/aurora.css' />";
-        echo "<p class='fonte14 espaco-letra fonte-montserrat fnc-sucesso'>";
-        echo htmlspecialchars($mensagem);
-        echo "</p>";
-        echo "<hr> <hr>";
-    }
 }

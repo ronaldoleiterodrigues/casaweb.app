@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Models;
 
@@ -16,33 +16,38 @@ class Usuario
     private string $datacadastro;
     private string $ativo;
 
-    public function __construct(string $id = '',string $nome = '',string $usuario ='', string $senha ='',string $perfil ='',string $email ='',string $imagem ='', string $dataCadastro ='',string $ativo  =''){
-     
-      $this->id = $id;
-      $this->nome = $nome;
-      $this->usuario = $usuario;
-      $this->senha = $senha;
-      $this->perfil = $perfil;
-      $this->email = $email;
-      $this->imagem = $imagem;
-      $this->datacadastro = $dataCadastro ?? ('Y-m-d H:i:s');
-      $this->ativo = $ativo;
+    public function __construct(string $id = '', string $nome = '', string $usuario = '', string $senha = '', string $perfil = '', string $email = '', string $imagem = '', string $dataCadastro = '', string $ativo  = '')
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $this->id = $id;
+        $this->nome = $nome;
+        $this->usuario = $usuario;
+        $this->senha = $senha;
+        $this->perfil = $perfil;
+        $this->email = $email;
+        $this->imagem = $imagem;
+        $this->datacadastro = $dataCadastro ?? ('Y-m-d H:i:s');
+        $this->ativo = $ativo;
     }
-    public function getId(){
+    public function getId()
+    {
         return $this->id;
     }
-    public function setId($id){
-          $this->id = $id;
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
-    public function __set($chave, $valor){
+    public function __set($chave, $valor)
+    {
 
-       if(property_exists($this, $chave)):
-        $this->$chave = $valor;
-       endif;
+        if (property_exists($this, $chave)):
+            $this->$chave = $valor;
+        endif;
     }
 
-    public function toArray(){
+    public function toArray()
+    {
         return [
             'id' => $this->id,
             'nome' => $this->nome,
@@ -55,12 +60,9 @@ class Usuario
             'ativo' => $this->ativo
         ];
     }
-    
+
     public function atributosPreenchidos()
     {
-        return array_filter($this->toArray(), fn($value) => $value !== null && $value !=='');
+        return array_filter($this->toArray(), fn($value) => $value !== null && $value !== '');
     }
-
-
-    
 }

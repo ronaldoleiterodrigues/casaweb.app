@@ -1,8 +1,12 @@
 <?php
+use App\Configurations\Formater;
+$formater = new Formater();
+
 if ($_GET) {
     $controller = strtolower(str_replace("Controller", "", $_GET['controller']));
-    $metodo = strtolower($_GET['metodo']);
+    $metodo = strtolower($_GET['metodo']);    
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

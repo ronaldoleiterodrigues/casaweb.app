@@ -13,7 +13,7 @@
                         <i class="fa-solid fa-user-tie fonte18 mg-r-1"></i> Proprietario
                     </a>
                 </li>
-                <li class="mg-b-2 pd-b-1"> <a href="" class="fonte14 fnc-cinza">
+                <li class="mg-b-2 pd-b-1"> <a href="index.php?controller=ImovelController&metodo=listar" class="fonte14 fnc-cinza">
                         <i class="fa-solid fa-city fonte18 mg-r-1"></i> Imovel
                     </a>
                 </li>

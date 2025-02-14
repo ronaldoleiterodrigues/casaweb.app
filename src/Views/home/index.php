@@ -48,24 +48,29 @@
             <h4 class="fonte46 fnc-preto-azulado  espaco-letra uppercase txt-c mg-b-4">Comprar</h4>
         </div>
 
-        <div class="box-12 flex justify-center mg-t-2">
-
-            <div class="box-4 shadow-down pd-b-2">
+        <div class="box-12 flex justify-start flex-wrap mg-t-2">
+            <?php 
+               if(isset($imoveis) && count($imoveis) > 0):
+                // var_dump($imoveis)
+                foreach($imoveis as $dados):
+                    if($dados->FINALIDADE == 1):
+            ?>
+            <div class="box-4 shadow-down pd-b-2 mg-b-4">
                 <!-- carregar imagem do imovel -->
-                <div class="box-12">
-                    <img src="lib/img/imagens/casa6.jpg" alt="">
+                <div class="box-12 imagemcapa">
+                    <img src="lib/img/upload/<?= $dados->IMAGEMCAPA; ?>" alt="">
                 </div>
                 <!-- carregar endereço do imovel -->
                 <div class="box-12">
                     <p class="pd-l-2 mg-t-2 fonte28 fw-bold roboto-condensed captalize espaco-letra fnc-preto-azulado fnc-vermelho-hover">
-                        rua dos cravos, 233
+                       <?= $dados->LOGRADOURO;?>
                     </p>
-                    <span class="fonte24 fw-300 pd-l-2 mg-t-1">São Paulo, SP </span>
+                    <span class="fonte24 fw-300 pd-l-2 mg-t-1"> <?= $dados->CIDADE;?> </span>
                 </div>
                 <!-- carregar valor do imovel -->
                 <div class="box-12 pd-20">
                     <p class=" pd-l-2 mg-t-2 fonte22 fw-400 roboto-condensed  fnc-preto-azulado">
-                        R$ 225.000,00
+                   <?= "R$  " .$formater->converterMoeda($dados->VALOR);?>
                     </p>
                     <div class="divider mg-t-2"></div>
                 </div>
@@ -77,14 +82,14 @@
                     <div class="box-3 txt-c" title="metros quadrados construidos"> <i class="fa-solid fa-square-minus fnc-cinza fonte24"></i><br> M2 const </div>
                 </div>
                 <div class="box-12 mg-t-2">
-                    <div class="box-3 txt-c fonte16"> 4 </div>
-                    <div class="box-3 txt-c fonte16"> 3 </div>
-                    <div class="box-3 txt-c fonte16"> 580 </div>
-                    <div class="box-3 txt-c fonte16"> 300 </div>
+                    <div class="box-3 txt-c fonte16">  <?= $dados->QUARTOS;?>  </div>
+                    <div class="box-3 txt-c fonte16">  <?= $dados->BANHEIROS;?>  </div>
+                    <div class="box-3 txt-c fonte16">  <?= $dados->AREATOTAL;?>  </div>
+                    <div class="box-3 txt-c fonte16">  <?= $dados->AREACONSTRUIDA;?>  </div>
                 </div>
 
-
             </div>
+            <?php endif; endforeach;  endif;?>
 
         </div>
 
@@ -105,24 +110,30 @@
             <h4 class="fonte46 fnc-preto-azulado  espaco-letra uppercase txt-c mg-b-4">Alugar</h4>
         </div>
 
-        <div class="box-12 flex justify-center mg-t-2">
+        <div class="box-12 flex justify-start flex-wrap mg-t-2">
+        <?php 
+               if(isset($imoveis) && count($imoveis) > 0):
+                // var_dump($imoveis)
+                foreach($imoveis as $dados):
+                    if($dados->FINALIDADE == 2):
+            ?>
 
-            <div class="box-4 shadow-down pd-b-2">
+            <div class="box-4  shadow-down pd-b-2 mg-b-4">
                 <!-- carregar imagem do imovel -->
-                <div class="box-12">
-                    <img src="lib/img/imagens/casa6.jpg" alt="">
+                <div class="box-12 imagemcapa">
+                    <img src="lib/img/upload/<?= $dados->IMAGEMCAPA;?> " alt="">
                 </div>
                 <!-- carregar endereço do imovel -->
                 <div class="box-12">
                     <p class="pd-l-2 mg-t-2 fonte28 fw-bold roboto-condensed captalize espaco-letra fnc-preto-azulado fnc-vermelho-hover">
-                        rua dos cravos, 233
+                    <?= $dados->LOGRADOURO;?> 
                     </p>
-                    <span class="fonte24 fw-300 pd-l-2 mg-t-1">São Paulo, SP </span>
+                    <span class="fonte24 fw-300 pd-l-2 mg-t-1"><?= $dados->CIDADE.", ";?>  </span>
                 </div>
                 <!-- carregar valor do imovel -->
                 <div class="box-12 pd-20">
                     <p class=" pd-l-2 mg-t-2 fonte22 fw-400 roboto-condensed  fnc-preto-azulado">
-                        R$ 225.000,00
+                    <?= "R$  " .$formater->converterMoeda($dados->VALOR);?>
                     </p>
                     <div class="divider mg-t-2"></div>
                 </div>
@@ -134,14 +145,13 @@
                     <div class="box-3 txt-c" title="metros quadrados construidos"> <i class="fa-solid fa-square-minus fnc-cinza fonte24"></i><br> M2 const </div>
                 </div>
                 <div class="box-12 mg-t-2">
-                    <div class="box-3 txt-c fonte16"> 4 </div>
-                    <div class="box-3 txt-c fonte16"> 3 </div>
-                    <div class="box-3 txt-c fonte16"> 580 </div>
-                    <div class="box-3 txt-c fonte16"> 300 </div>
+                <div class="box-3 txt-c fonte16">  <?= $dados->QUARTOS;?>  </div>
+                    <div class="box-3 txt-c fonte16">  <?= $dados->BANHEIROS;?>  </div>
+                    <div class="box-3 txt-c fonte16">  <?= $dados->AREATOTAL;?>  </div>
+                    <div class="box-3 txt-c fonte16">  <?= $dados->AREACONSTRUIDA;?>  </div>
                 </div>
-
-
             </div>
+            <?php endif; endforeach;  endif;?>
 
         </div>
     </div>
@@ -252,7 +262,7 @@
                 </p>
             </div>
         </div>
-        <!-- formulario de contato -->
+        <!-- formulario de contato index.php?controller=BaseController&metodo=cadastrar -->
         <div class="box-6">
             <h3 class="fnc-branco fonte22  fw-300 espaco-letra uppercase txt-c mg-b-8">contato</h3>
             <form action="" method="POST" class="fonte14 fnc-branco">
@@ -269,24 +279,24 @@
 
                 <div class="box-12">
                     <label for="">Email</label>
-                    <input type="email" name="email">
+                    <input type="email" name="email" required>
                 </div>
 
                 <div class="box-12 flex justify-start">
                     <div class="box-3 flex justify-start"> <label for="" >Interesse</label> </div>
-                    <div class="box-4 flex justify-start"> <span>Comprar</span> <input type="radio" name="interesse"> </div>
-                    <div class="box-4 flex justify-start"> <span>Alugar</span> <input type="radio" name="interesse"> </div>               
+                    <div class="box-4 flex justify-start"> <span>Comprar</span> <input type="radio" name="interesse" value="COMPRAR"> </div>
+                    <div class="box-4 flex justify-start"> <span>Alugar</span> <input type="radio" name="interesse"  value="ALUGAR"> </div>               
                     
                 </div>
 
                 <div class="box-12">
                     <label for="">Mensagem:</label>
-                    <textarea name="" id="" class="fnc-branco mg-t-3"></textarea>
+                    <textarea name="mensagem" id="" class="fnc-branco mg-t-3"></textarea>
 
                 </div>
 
                 <div class="box-12">
-                    <input type="submit" class="btn bg-vermelho fnc-branco fonte20">
+                    <input type="submit" class="btn bg-vermelho fnc-branco fonte20" value="Enviar mensagem">
                 </div>
 
             </form>

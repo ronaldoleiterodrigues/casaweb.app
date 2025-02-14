@@ -8,7 +8,7 @@ class ImagemImovel
     private string $imagem;
     private string $imovel;
     
-    public function __construct(string $id = '', string $imagemimovel, string $imovel){
+    public function __construct(string $id = '', string $imagemimovel ='', string $imovel =''){
        $this->id = $id;
        $this->imagem = $imagemimovel;
        $this->imovel = $imovel;

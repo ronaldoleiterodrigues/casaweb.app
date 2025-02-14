@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+session_start();
+
 use App\Models\Dao\UsuarioDao;
 use App\Models\Notifications;
 use App\Models\Usuario;
@@ -21,7 +23,6 @@ class UsuarioController extends Notifications
     $this->usuarioDao = new UsuarioDao();
     $this->usuarioService = new UsuarioService($this->usuarioDao);
     $this->fileiUploadService = new FileUploadServices('lib/img/users-images');
-
   }
 
   function index()
@@ -41,7 +42,7 @@ class UsuarioController extends Notifications
 
     endif;
 
-     $perfil = $this->perfil->listarTodos();
+    $perfil = $this->perfil->listarTodos();
     require_once "Views/painel/index.php";
   }
 
@@ -58,10 +59,10 @@ class UsuarioController extends Notifications
     require_once "Views/painel/index.php";
   }
 
-  function atualizar($dados,$file)
+  function atualizar($dados, $file)
   {
     $imagem = $this->fileiUploadService->upload($file['imagem']);
-    $retorno = $this->usuarioService->atualizarUsuario($dados,$imagem);
+    $retorno = $this->usuarioService->atualizarUsuario($dados, $imagem);
     echo $this->success('Usuario', 'Atualizar', 'listar');
   }
 
@@ -88,16 +89,52 @@ class UsuarioController extends Notifications
     require_once "Views/shared/header.php";
   }
 
-  public function alterarStatus(){
+  public function alterarStatus()
+  {
 
     $id = $_GET['id'] ?? null;
     $ativo = $_GET['ativo'] ?? null;
 
-    if($id):
-      $usuario = new Usuario($id,'','','','','','','',$ativo);
+    if ($id):
+      $usuario = new Usuario($id, '', '', '', '', '', '', '', $ativo);
       $this->usuarioDao->atualizar($usuario);
-      #$this->success("Proprietaio", "Atualizado", "listar");
+    #$this->success("Proprietaio", "Atualizado", "listar");
     endif;
+  }
 
+  public function autenticar()
+  {
+
+    require_once "Views/usuario/autenticar.php";
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'):
+
+      $usuario = $_POST['usuario'] ?? '';
+      $senha = $_POST['senha'] ?? '';
+
+      $dadosUsuario = $this->usuarioDao->autenticar($usuario);
+
+      if (!empty($dadosUsuario) && password_verify($senha, $dadosUsuario[0]->SENHA)):
+        $this->gerraSessao($dadosUsuario);
+        header("location:index.php?controller=PainelController&metodo=index");
+        exit;
+      else :
+        echo $this->loginError('Usuario ou senha incorreto!');
+      endif;
+
+    endif;
+  }
+
+  public function gerraSessao($usuario)
+  {   
+    $_SESSION['id'] = $usuario[0]->ID;
+    $_SESSION['nome'] = $usuario[0]->NOME;
+    $_SESSION['imagem'] = $usuario[0]->IMAGEM;
+  }
+
+  public function logout()
+  {
+    session_destroy();
+    header("location:index.php");
   }
 }

@@ -28,12 +28,11 @@ class ImovelController extends Notifications
         $this->proprietarioDao = new ProprietarioDao();
         $this->imovelService = new ImovelService($this->imovelDao);
         $this->fileUploadService = new FileUploadServices('lib/img/upload');
-      
     }
-   
+
 
     function index()
-    {    
+    {
         $id = $_GET['id'] ?? null;
         if ($id):
             $imovel = $this->imovelDao->listarPorId($id);
@@ -43,12 +42,12 @@ class ImovelController extends Notifications
         if ($_SERVER['REQUEST_METHOD'] == 'POST'):
 
             if (!empty($_POST['id'])):
-                $this->atualizar($_POST, $_FILES);                
+                $this->atualizar($_POST, $_FILES);
             else:
                 $this->inserir($_POST, $_FILES);
             endif;
 
-        endif;        
+        endif;
 
         $finalidade = $this->finalidadeDao->listarTodos();
         $tipoimovel = $this->tipoimovelDao->listarTodos();
@@ -62,6 +61,23 @@ class ImovelController extends Notifications
         $imagem = $this->fileUploadService->upload($file['imagemcapa']);
         $retorno = $this->imovelService->cadastrarImovel($dados, $imagem);
         echo $this->success('Imovel', 'Cadastrar', 'listar');
+    }
+    #metodo responsavel por gerenciar os dados de cadastro de imagem de um imovel
+    public function cadastrarImagemImovel()
+    {
+        $id = $_GET['id'] ?? null;
+
+        if ($id):
+            $imovel = $this->imovelDao->listarPorId($id);
+        endif;
+         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['imagens']['name'])):
+             $imagens = $this->fileUploadService->uploadMultiplo($_FILES['imagens'], $imovel[0]->ID);
+             if (!empty($imagens)):
+                 $this->imovelService->cadastrarImagemImovel($_POST, $imagens);
+                 echo $this->success("Imovel", "Cadastrado", "listar");
+             endif;
+         endif;
+        require_once "Views/painel/index.php";
     }
 
     function listar()
@@ -111,10 +127,9 @@ class ImovelController extends Notifications
         $ativo = $_GET['ativo'] ?? null;
 
         if ($id):
-            $imovel = new Imovel($id, '', '', '', '', '','', '', '', '', '', '', '', $ativo, '', '', '', '');
+            $imovel = new Imovel($id, '', '', '', '', '', '', '', '', '', '', '', '', $ativo, '', '', '', '');
             $this->imovelDao->atualizar($imovel);
         #$this->success("Imovel", "Atualizado", "listar");
         endif;
     }
-   
 }

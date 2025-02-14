@@ -47,8 +47,8 @@ class Conexao
     protected function listar($tabela, $condicao = "", $parametro = [])
     {
         $sql = "SELECT * FROM {$tabela} {$condicao} ORDER BY ID DESC ";
-        $stmt = $this->executarConsulta($sql, $parametro);
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+         $stmt = $this->executarConsulta($sql, $parametro);
+         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     // metodo responsavel por listar o ultimo registro no banco

@@ -1,12 +1,17 @@
 <?php
+ob_start();
+
+if(!isset($_SESSION)):
+  session_start();
+endif;
+
 use App\Configurations\Formater;
 $formater = new Formater();
 
 if ($_GET) {
     $controller = strtolower(str_replace("Controller", "", $_GET['controller']));
-    $metodo = strtolower($_GET['metodo']);    
+    $metodo = strtolower($_GET['metodo']);
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -50,11 +55,18 @@ if ($_GET) {
             <div class="box-6">
                 <nav class="wd-100 mg-t-1">
                     <ul class="flex justify-end">
+                        <?php 
+                        if(!isset($controller)): ?>
                         <li class="mg-l-3"> <a href="#inicio" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16 captalize">inicio </a> </li>
                         <li class="mg-l-3"> <a href="#comprar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16 captalize">Camprar </a> </li>
                         <li class="mg-l-3"> <a href="#alugar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16 captalize">Alugar </a> </li>
                         <li class="mg-l-3"> <a href="#depoimentos" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16 captalize">depoimentos </a> </li>
                         <li class="mg-l-3"> <a href="#contato" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16 captalize">Contato </a> </li>
+                        <li class="mg-l-3"> <a href="index.php?controller=UsuarioController&metodo=autenticar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16 captalize">Login </a> </li>
+                       <?php else: ?>
+                        <li class="mg-l-3"> <a href="index.php" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16 captalize">Index </a> </li>
+                        <li class="mg-l-3"> <a href="index.php?controller=UsuarioController&metodo=autenticar" class="fnc-branco fnc-vermelho-hover espaco-letra fonte16 captalize">Login </a> </li>
+                        <?php endif; ?>
                     </ul>
                 </nav>
             </div>

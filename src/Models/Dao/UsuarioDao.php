@@ -10,6 +10,10 @@ class UsuarioDao extends Conexao
         return $this->listar("USUARIO");
     }
 
+    public function autenticar($usuario){
+        return $this->listar("USUARIO","WHERE USUARIO = '".$usuario."'"); 
+    }
+
     public function listarPorId($id){
         return $this->listar("USUARIO","WHERE ID = ?",[$id]);
     }

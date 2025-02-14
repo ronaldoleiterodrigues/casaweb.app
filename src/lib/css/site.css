@@ -181,3 +181,50 @@ input[type='file'] {
     /* 5px*/
     margin-right: 0.7575757575757576%;
 }
+.file-image{
+    height: 40px;
+    background: #ffe054;
+    padding: 10px;
+    color:#454f62;
+    border-radius: 5px;
+    margin-bottom: 30px;;
+}
+.imagemcapa{
+    height: 250px;
+}
+.imagemcapa img{
+    min-width: 100%;
+    height: 250px;
+}
+.total-msg{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+.msg-cli{
+border:1px solid #ddd;
+height: 70px;
+}
+.mod{
+    width: 100%;
+    max-width: 500px;
+    height: 0;
+    border-left: 8px solid #340b93;
+    border-radius: 10px;
+    transform: scale(.8);
+    transition: all 0.15s ease-in-out;
+    position: absolute;
+    top:80px;
+    right: 0;
+    background-color: #fff;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+}
+.mod-visivel{
+    height: 800px;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}

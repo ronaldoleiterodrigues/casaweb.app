@@ -103,3 +103,9 @@ function formata_mascara(campo_passado, mascara) {
         campo_passado.value += texto.substring(0, 1);
     }
 }
+
+function exibirMensagem()
+{
+    let bloco = document.getElementById("blocoMensagens");
+    bloco.classList.toggle("mod-visivel");
+}

@@ -73,7 +73,6 @@
                     endif; ?>
 
 
-
                     <td class=" txt-c">
                         <?php if ($valores->ESTATUS == '1'): ?>
                             <span class="ativo" data-id="<?= $valores->ID; ?>" data-status="0" data-url="index.php?controller=ImovelController&metodo=alterarStatus">
@@ -95,6 +94,10 @@
 
                         <a href="index.php?controller=ImovelController&metodo=index&id=<?= $valores->ID; ?>">
                             <i class="fa-solid fa-pen fonte14 fnc-vermelho-claro "></i>
+                        </a>
+                        
+                        <a href="index.php?controller=ImovelController&metodo=cadastrarImagemImovel&id=<?= $valores->ID; ?>">
+                          <i class="fa-solid fa-camera fonte14 fnc-preto-azulado"></i>
                         </a>
 
                     </td>
